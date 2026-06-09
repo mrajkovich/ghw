@@ -1,33 +1,75 @@
+/* OmegaXL Columns block — mission/ratings section */
+
 .columns > div {
   display: flex;
   flex-direction: column;
-}
-
-.columns img {
-  width: 100%;
+  gap: 24px;
 }
 
 .columns > div > div {
-  order: 1;
+  flex: 1;
+  padding: 24px;
+  background: #fff;
+  border-radius: 8px;
 }
 
-.columns > div > .columns-img-col {
-  order: 0;
+.columns > div > div h3 {
+  color: #005cb9;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 8px;
 }
 
-.columns > div > .columns-img-col img {
-  display: block;
+.columns > div > div p {
+  color: #444;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  margin: 0 0 12px;
 }
 
-@media (min-width: 900px) {
+.columns > div > div a {
+  color: #005cb9;
+  font-weight: 700;
+  font-size: 1.3rem;
+  text-decoration: underline;
+}
+
+.columns > div > div img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+@media (min-width: 600px) {
   .columns > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
   .columns > div > div {
     flex: 1;
-    order: unset;
+    min-width: 240px;
   }
+}
+
+/* Blue section variant — white text */
+.section.dark .columns > div > div,
+.section.blue .columns > div > div {
+  background: rgba(255 255 255 / 12%);
+  border: 1px solid rgba(255 255 255 / 20%);
+}
+
+.section.dark .columns > div > div h3,
+.section.blue .columns > div > div h3 {
+  color: #fff;
+}
+
+.section.dark .columns > div > div p,
+.section.blue .columns > div > div p {
+  color: rgba(255 255 255 / 85%);
+}
+
+.section.dark .columns > div > div a,
+.section.blue .columns > div > div a {
+  color: #ffcb45;
 }
