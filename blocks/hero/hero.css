@@ -1,4 +1,4 @@
-/* OmegaXL Hero — full-width banner images, no text overlay */
+/* OmegaXL-style hero: full-width image banner */
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
@@ -7,16 +7,16 @@
 .hero {
   position: relative;
   padding: 0;
-  min-height: 0;
+  min-height: 400px;
   overflow: hidden;
 }
 
+/* Full-width image as main hero content (OmegaXL style) */
 .hero picture {
   position: relative;
   z-index: 0;
   width: 100%;
   display: block;
-  line-height: 0;
 }
 
 .hero img {
@@ -26,49 +26,111 @@
   object-fit: cover;
 }
 
-/* Text content inside hero (if any) */
-.hero .default-content-wrapper {
-  padding: 24px;
-  text-align: center;
-  background: #fff;
-}
-
+/* Text/heading renders below image or as overlay */
 .hero h1 {
-  color: #005cb9;
-  font-size: 2.8rem;
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 24px 0;
+  color: var(--color-neutral-50);
+  font-family: var(--type-heading-font-family);
   font-weight: 700;
-  margin: 0 0 16px;
+  text-shadow: 0 2px 8px rgb(0 0 0 / 40%);
 }
 
-.hero p a {
-  display: inline-block;
-  background-color: #005cb9;
+/* If hero has overlay text (absolute positioned hero) */
+.hero.overlay {
+  min-height: 400px;
+}
+
+.hero.overlay picture {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero.overlay img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.hero.overlay .default-content-wrapper {
+  position: relative;
+  z-index: 1;
+  padding: 60px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero.overlay h1 {
+  padding: 0;
+  margin-bottom: 16px;
+}
+
+/* Default content below image (OmegaXL primary style) */
+.hero .default-content-wrapper {
+  padding: 20px 24px;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero .default-content-wrapper h1 {
+  color: var(--color-neutral-900);
+  text-shadow: none;
+  padding: 0;
+}
+
+.hero .default-content-wrapper p {
+  font-size: 1.6rem;
+  color: var(--color-neutral-800);
+  max-width: 700px;
+  margin: 0 auto 16px;
+}
+
+/* OmegaXL CTA button in hero */
+.hero .default-content-wrapper a.button,
+.hero .default-content-wrapper .button {
+  background: var(--color-brand-cyan, #00a7e1);
+  border-color: var(--color-brand-cyan, #00a7e1);
   color: #fff;
-  padding: 12px 32px;
-  border-radius: 8px;
-  text-decoration: none;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  padding: 12px 36px;
+  border-radius: 16px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: background-color 0.2s ease;
+  letter-spacing: 0.06em;
+  box-shadow: 0 3.62px 18px 0 rgb(0 0 0 / 30%);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.hero p a:hover {
-  background-color: #003f80;
-  text-decoration: none;
-}
-
-@media (min-width: 600px) {
-  .hero img {
-    min-height: 300px;
-    object-fit: cover;
-    width: 100%;
-  }
+.hero .default-content-wrapper a.button:hover {
+  background: #0090c5;
+  border-color: #0090c5;
+  box-shadow: 0 3.62px 18px 0 rgb(0 0 0 / 50%);
 }
 
 @media (min-width: 900px) {
-  .hero img {
-    min-height: 400px;
+  .hero {
+    min-height: 500px;
+  }
+
+  .hero .default-content-wrapper {
+    padding: 32px 32px;
+  }
+
+  .hero h1 {
+    padding: 32px 32px 0;
+    font-size: 5.6rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero {
+    min-height: 600px;
   }
 }
