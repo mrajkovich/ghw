@@ -1,179 +1,325 @@
-/* add global styles that can be loaded post LCP here */
+/* OmegaXL — post-LCP overrides. These fire after initial paint. */
 
-/* OmegaXL Post-LCP styles: footer, promo banners, additional components */
+/* =====================================================
+   NAV: Force "OmegaXL" brand name display
+   The nav.plain.html from DA is empty so header.js
+   falls back — override with CSS content injection
+   ===================================================== */
 
-/* Footer OmegaXL styling */
-footer {
-  background: linear-gradient(90deg, #005cb9 0%, #003d80 100%);
-  color: #fff;
-  padding: 40px 0 24px;
-  margin-top: 48px;
+header .nav-brand a {
+  font-size: 2rem !important;
+  font-weight: 900 !important;
+  color: #005cb9 !important;
+  letter-spacing: -0.01em !important;
+  font-family: 'Roboto', 'Open Sans', helvetica, arial, sans-serif !important;
 }
+
+/* Hide whatever text is in nav brand and show OmegaXL */
+header .nav-brand a {
+  font-size: 0 !important;
+}
+
+header .nav-brand a::before {
+  content: 'OmegaXL';
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #005cb9;
+  font-family: 'Roboto', 'Open Sans', helvetica, arial, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* =====================================================
+   SECTIONS: Apply OmegaXL blue gradient to key sections
+   Target by card/block type present in the section
+   ===================================================== */
+
+/* Any section that contains .cards with images → check if it's product section */
+/* Bundle Savings and Shop All sections — white background */
+main .section:has(.cards):not(:has(.cards > ul > li:not(:has(img)))) {
+  background: #fff;
+}
+
+/* Benefits section (cards with no images) → blue gradient */
+main .section:has(.cards > ul > li:not(:has(img))) {
+  background: linear-gradient(135deg, #005cb9 0%, #0080c9 50%, #00a7e1 100%);
+  padding: 48px 0 !important;
+}
+
+main .section:has(.cards > ul > li:not(:has(img))) > div > h2 {
+  color: #fff !important;
+  text-shadow: 0 1px 3px rgba(0 0 0 / 20%);
+}
+
+main .section:has(.cards > ul > li:not(:has(img))) > div > h2::after {
+  background: rgba(255 255 255 / 50%) !important;
+}
+
+main .section:has(.cards > ul > li:not(:has(img))) > div > p {
+  color: #fff;
+}
+
+main .section:has(.cards > ul > li:not(:has(img))) > div > p > a {
+  display: inline-block;
+  background-color: #00a7e1;
+  color: #fff !important;
+  padding: 14px 40px;
+  border-radius: 40px;
+  text-decoration: none !important;
+  font-size: 1.6rem;
+  font-weight: 700;
+  transition: background-color 0.2s ease;
+}
+
+/* Testimonials section → blue gradient */
+main .section:has(.cards > ul > li:has(img[src*="testimonial"])),
+main .section:has(.cards > ul > li:has(img[src*="helen"])),
+main .section:has(.cards > ul > li:has(img[src*="frank"])) {
+  background: linear-gradient(135deg, #005cb9 0%, #0080c9 50%, #00a7e1 100%);
+  padding: 48px 0 !important;
+}
+
+main .section:has(.cards > ul > li:has(img[src*="testimonial"])) > div > h2,
+main .section:has(.cards > ul > li:has(img[src*="helen"])) > div > h2,
+main .section:has(.cards > ul > li:has(img[src*="frank"])) > div > h2 {
+  color: #fff !important;
+}
+
+main .section:has(.cards > ul > li:has(img[src*="testimonial"])) > div > h2::after,
+main .section:has(.cards > ul > li:has(img[src*="helen"])) > div > h2::after,
+main .section:has(.cards > ul > li:has(img[src*="frank"])) > div > h2::after {
+  background: rgba(255 255 255 / 50%) !important;
+}
+
+/* Table/Difference section → light background with centered heading */
+main .section:has(.table) {
+  background: #f8fbff;
+  padding: 48px 0 !important;
+}
+
+main .section:has(.table) > div > h2 {
+  color: #005cb9 !important;
+}
+
+/* Embed/video section → dark blue */
+main .section:has(.embed) {
+  background: linear-gradient(135deg, #003d80 0%, #005cb9 100%);
+  padding: 32px 0 !important;
+}
+
+/* Quote section → dark blue with mountain bg feel */
+main .section:has(.quote) {
+  background: linear-gradient(135deg, #003d80 0%, #005cb9 70%, #00a7e1 100%);
+  padding: 48px 0 !important;
+}
+
+main .section:has(.quote) .quote p {
+  color: #fff !important;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+main .section:has(.quote) .quote p em {
+  color: rgba(255 255 255 / 80%) !important;
+  font-size: 1.6rem;
+  font-weight: 400;
+  display: block;
+  margin-top: 8px;
+}
+
+main .section:has(.quote) > div > p > a {
+  display: inline-block;
+  background-color: #00a7e1;
+  color: #fff !important;
+  padding: 14px 40px;
+  border-radius: 40px;
+  text-decoration: none !important;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 16px;
+}
+
+/* Columns/Mission section → light background */
+main .section:has(.columns) {
+  background: #f8fbff;
+  padding: 48px 0 !important;
+}
+
+main .section:has(.columns) > div > h2 {
+  color: #005cb9 !important;
+}
+
+/* =====================================================
+   CARDS: Fix image display in cards
+   createOptimizedPicture makes <picture> elements
+   ===================================================== */
+
+/* Product cards — ensure images show */
+.cards > ul > li .cards-card-image picture {
+  display: block;
+  width: 100%;
+  line-height: 0;
+}
+
+.cards > ul > li .cards-card-image img {
+  display: block !important;
+  width: 100% !important;
+  max-height: 180px !important;
+  object-fit: contain !important;
+  padding: 12px !important;
+  background: rgba(255 255 255 / 15%) !important;
+}
+
+/* Benefits cards (no image) — horizontal layout */
+.cards > ul > li:not(:has(img)) {
+  background: rgba(255 255 255 / 12%) !important;
+  border: 1px solid rgba(255 255 255 / 25%) !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  box-shadow: none !important;
+}
+
+.cards > ul > li:not(:has(img)) .cards-card-body h3 {
+  color: #fff !important;
+  font-size: 1.6rem !important;
+  text-transform: none !important;
+  font-weight: 700 !important;
+}
+
+.cards > ul > li:not(:has(img)) .cards-card-body p {
+  color: rgba(255 255 255 / 85%) !important;
+  font-size: 1.4rem !important;
+}
+
+/* Testimonial cards — white cards */
+.cards > ul > li:has(img[src*="testimonial"]),
+.cards > ul > li:has(img[src*="helen"]),
+.cards > ul > li:has(img[src*="frank"]),
+.cards > ul > li:has(img[src*="robin"]),
+.cards > ul > li:has(img[src*="connie"]) {
+  background: #fff !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+.cards > ul > li:has(img[src*="testimonial"]) .cards-card-image img,
+.cards > ul > li:has(img[src*="helen"]) .cards-card-image img,
+.cards > ul > li:has(img[src*="frank"]) .cards-card-image img,
+.cards > ul > li:has(img[src*="robin"]) .cards-card-image img,
+.cards > ul > li:has(img[src*="connie"]) .cards-card-image img {
+  max-height: 200px !important;
+  object-fit: cover !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.cards > ul > li:has(img[src*="helen"]) h3,
+.cards > ul > li:has(img[src*="frank"]) h3,
+.cards > ul > li:has(img[src*="robin"]) h3,
+.cards > ul > li:has(img[src*="connie"]) h3 {
+  color: #005cb9 !important;
+  text-transform: none !important;
+  font-size: 2rem !important;
+}
+
+.cards > ul > li:has(img[src*="helen"]) p,
+.cards > ul > li:has(img[src*="frank"]) p,
+.cards > ul > li:has(img[src*="robin"]) p,
+.cards > ul > li:has(img[src*="connie"]) p {
+  color: #444 !important;
+}
+
+/* =====================================================
+   TABLE: OmegaXL comparison table styling
+   ===================================================== */
+
+main .table div:first-child {
+  background: #005cb9 !important;
+  border-radius: 8px 8px 0 0;
+  padding: 16px 20px !important;
+}
+
+main .table div:first-child div {
+  color: #fff !important;
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+}
+
+main .table div:first-child div:first-child {
+  font-size: 2rem !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+}
+
+main .table div:not(:first-child) {
+  border-bottom: 1px solid #e8e8e8;
+  padding: 14px 20px !important;
+  display: flex;
+  gap: 16px;
+}
+
+main .table div:not(:first-child) div:first-child {
+  flex: 2;
+  color: #005cb9;
+  font-size: 1.4rem;
+}
+
+main .table div:not(:first-child) div:nth-child(2),
+main .table div:not(:first-child) div:nth-child(3) {
+  flex: 1;
+  text-align: center;
+  font-size: 1.6rem;
+  color: #333;
+}
+
+/* =====================================================
+   GLOBAL SECTION HEADINGS
+   ===================================================== */
+
+main .section > div > h2 {
+  text-align: center !important;
+  font-size: clamp(2.4rem, 4vw, 3.6rem) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin-top: 0 !important;
+  padding-top: 8px !important;
+}
+
+/* White heading variant (for blue sections) */
+main .section:has(.cards > ul > li:not(:has(img))) > div > h2,
+main .section:has(.embed) > div > h2,
+main .section:has(.quote) > div > h2 {
+  color: #fff !important;
+}
+
+main .section:has(.cards > ul > li:not(:has(img))) > div > h2::after,
+main .section:has(.embed) > div > h2::after {
+  background: rgba(255 255 255 / 50%) !important;
+}
+
+/* =====================================================
+   DROPIN BUTTONS: Override to OmegaXL pill style
+   ===================================================== */
+
+.dropin-design button,
+.dropin-design .dropin-button--primary {
+  border-radius: 40px !important;
+}
+
+/* =====================================================
+   FOOTER: OmegaXL dark blue gradient footer
+   ===================================================== */
 
 footer .footer {
-  max-width: 1264px;
-  margin: 0 auto;
-  padding: 0 32px;
-}
-
-footer a {
-  color: #b3ceea;
-  font-weight: 400;
-  transition: color 0.2s ease;
-}
-
-footer a:hover {
+  background: linear-gradient(135deg, #003d80 0%, #005cb9 100%);
   color: #fff;
-  text-decoration: none;
 }
 
-footer h2,
-footer h3,
-footer h4 {
+footer .footer a {
+  color: rgba(255 255 255 / 80%);
+}
+
+footer .footer a:hover {
   color: #fff;
-  font-family: var(--type-heading-font-family, Montserrat, sans-serif);
-  text-transform: uppercase;
-  font-size: 1.4rem;
-  letter-spacing: 0.08em;
-  margin-top: 0;
-  margin-bottom: 12px;
-}
-
-footer p {
-  color: #b3ceea;
-  font-size: 1.4rem;
-  line-height: 1.6;
-  margin: 0 0 8px;
-}
-
-footer ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-footer ul li {
-  margin-bottom: 6px;
-}
-
-footer hr {
-  border-color: rgb(255 255 255 / 20%);
-  margin: 24px 0;
-}
-
-/* OmegaXL promo banner bar */
-.promo-banner {
-  background: #00a7e1;
-  color: #fff;
-  text-align: center;
-  padding: 10px 24px;
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
-.promo-banner a {
-  color: #fff;
-  text-decoration: underline;
-  font-weight: 700;
-}
-
-.promo-banner a:hover {
-  color: #FFCB45;
-}
-
-/* OmegaXL dropin button overrides */
-.dropin-design button[class*='primary'],
-.dropin-design [class*='primary-button'] {
-  background-color: #005cb9 !important;
-  border-color: #005cb9 !important;
-  color: #fff !important;
-  border-radius: 8px !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
-}
-
-.dropin-design button[class*='primary']:hover,
-.dropin-design [class*='primary-button']:hover {
-  background-color: #004d9e !important;
-  border-color: #004d9e !important;
-}
-
-/* OmegaXL accent/secondary actions */
-.dropin-design button[class*='secondary'],
-.dropin-design [class*='secondary-button'] {
-  border-color: #005cb9 !important;
-  color: #005cb9 !important;
-  border-radius: 8px !important;
-}
-
-/* Product detail page add-to-cart button */
-.product-details .dropin-button--primary,
-[class*='add-to-cart'] {
-  background: linear-gradient(90deg, #005cb9 0%, #00a7e1 100%) !important;
-  border: none !important;
-  color: #fff !important;
-  border-radius: 8px !important;
-  font-weight: 700 !important;
-  font-size: 1.6rem !important;
-  padding: 14px 32px !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
-  transition: opacity 0.2s ease, box-shadow 0.2s ease !important;
-}
-
-[class*='add-to-cart']:hover {
-  opacity: 0.9 !important;
-  box-shadow: 0 4px 16px rgb(0 92 185 / 40%) !important;
-}
-
-/* Breadcrumbs */
-.breadcrumbs {
-  font-size: 1.3rem;
-  color: #666;
-  margin: 8px 0 16px;
-}
-
-.breadcrumbs a {
-  color: #005cb9;
-  font-weight: 400;
-  text-decoration: none;
-}
-
-.breadcrumbs a:hover {
-  text-decoration: underline;
-}
-
-/* Rating stars accent color */
-.dropin-rating .dropin-rating__icon--filled,
-[class*='star-filled'],
-[class*='rating-filled'] {
-  color: #FFCB45 !important;
-  fill: #FFCB45 !important;
-}
-
-/* Trust badges / icons */
-.trust-badges {
-  display: flex;
-  gap: 24px;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 24px;
-  background: #f2f2f2;
-}
-
-/* Section dividers */
-main > .section + .section {
-  border-top: 0;
-}
-
-/* OmegaXL product grid section heading */
-main > .section > div > h2:first-child,
-main > .section > div > h3:first-child {
-  color: #005cb9;
-  font-family: var(--type-heading-font-family, Montserrat, sans-serif);
-  font-weight: 700;
-  margin-bottom: 24px;
 }
