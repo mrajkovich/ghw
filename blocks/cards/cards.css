@@ -1,4 +1,4 @@
-/* OmegaXL-styled product cards */
+/* OmegaXL-style product cards: clean white with subtle shadow */
 .cards-container .cards-wrapper {
   margin-top: var(--spacing-xbig);
 }
@@ -8,13 +8,13 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 24px;
 }
 
 .cards > ul > li {
   border: 1px solid #e8e8e8;
-  border-radius: 8px;
+  border-radius: 4px;
   background-color: #fff;
   box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
   transition: box-shadow 0.2s ease, transform 0.2s ease;
@@ -24,82 +24,97 @@
 }
 
 .cards > ul > li:hover {
-  box-shadow: 0 8px 24px rgb(0 92 185 / 15%);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 15%);
   transform: translateY(-2px);
 }
 
+/* Product image area */
 .cards .cards-card-image {
   line-height: 0;
-  background: #f8f9fa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
+  background: #f9f9f9;
+  flex-shrink: 0;
 }
 
-.cards > ul > li img {
+.cards .cards-card-image img {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: contain;
-  max-height: 200px;
+  padding: 16px;
+  box-sizing: border-box;
+  background: #f9f9f9;
+  display: block;
 }
 
+/* Card body */
 .cards .cards-card-body {
   padding: 16px;
   text-align: center;
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 8px;
+  justify-content: space-between;
 }
 
 .cards .cards-card-body h3 {
   font-size: 1.4rem;
-  font-weight: 700;
-  color: #212529;
-  margin: 0;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 12px;
+  font-family: var(--type-heading-font-family, Montserrat, sans-serif);
+  min-height: 2.8em;
   line-height: 1.4;
-  flex: 1;
 }
 
 .cards .cards-card-body p {
-  margin: 8px 0 0;
+  margin: 0 0 12px;
+  font-size: 1.4rem;
+  color: #666;
+  line-height: 1.5;
 }
 
-/* Shop Now / CTA buttons inside cards */
-.cards .cards-card-body a {
+/* Price styling */
+.cards .cards-card-body .price,
+.cards .cards-card-body p.price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #005cb9;
+  margin-bottom: 12px;
+}
+
+/* Shop/CTA button - OmegaXL blue */
+.cards .cards-card-body a,
+.cards .cards-card-body a:any-link {
   display: inline-block;
   background-color: #005cb9;
-  color: #fff !important;
+  color: #fff;
   padding: 10px 24px;
   border-radius: 8px;
-  text-decoration: none !important;
+  text-decoration: none;
   font-size: 1.3rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
-  width: 100%;
-  box-sizing: border-box;
-  text-align: center;
+  margin-top: auto;
+  align-self: center;
+  white-space: nowrap;
 }
 
 .cards .cards-card-body a:hover {
-  background-color: #003f80;
-  text-decoration: none !important;
-  box-shadow: 0 4px 12px rgb(0 92 185 / 30%);
+  background-color: #004d9e;
+  text-decoration: none;
+  box-shadow: 0 3px 12px rgb(0 92 185 / 35%);
+  color: #fff;
 }
 
-/* Benefits cards variant (no image, icon-based) */
-.cards > ul > li:has(.cards-card-image:empty) .cards-card-image {
-  display: none;
-}
-
-.cards > ul > li:has(.cards-card-image:empty) {
-  padding: 24px;
-}
-
-/* Testimonial cards */
-.cards .cards-card-body h3 {
+/* Secondary/outline button variant */
+.cards .cards-card-body a.button.secondary {
+  background-color: transparent;
+  border: 2px solid #005cb9;
   color: #005cb9;
+}
+
+.cards .cards-card-body a.button.secondary:hover {
+  background-color: #005cb9;
+  color: #fff;
 }
