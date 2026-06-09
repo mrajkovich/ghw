@@ -1,67 +1,77 @@
-.table {
-  width: 100%;
+/* OmegaXL Difference Table — blue header, clean rows, centered */
+
+.table-container {
   overflow-x: auto;
 }
 
 .table table {
   width: 100%;
-  max-width: 100%;
   border-collapse: collapse;
-  font-size: var(--body-font-size-xs);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 10%);
 }
 
-@media (min-width: 600px) {
-  .table table {
-    font-size: var(--body-font-size-s);
-  }
-}
-
-@media (min-width: 900px) {
-  .table table {
-    font-size: var(--body-font-size-m);
-  }
-}
-
-.table table thead tr {
-  border-top: 2px solid #dadada;
-  border-bottom: 2px solid #dadada;
-}
-
-.table table tbody tr {
-  border-bottom: 1px solid #dadada;
-}
-
-.table table th {
+/* Header row — OmegaXL blue with white text */
+.table thead th,
+.table table > tbody > tr:first-child td,
+.table table tr:first-child th {
+  background-color: #005cb9;
+  color: #fff;
+  font-size: 1.5rem;
   font-weight: 700;
-}
-
-.table table th,
-.table table td {
-  padding: 0.5em;
+  padding: 16px 20px;
   text-align: left;
+  border: none;
+  letter-spacing: 0.02em;
 }
 
-.table table th p,
-.table table td p {
-  margin: 0;
+.table table > tbody > tr:first-child td:first-child {
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
-.table table td p + p {
-  margin-top: 0.25em;
+/* Data rows */
+.table table > tbody > tr {
+  border-bottom: 1px solid #e8e8e8;
+  transition: background-color 0.15s ease;
 }
 
-/* no header variant */
-.table.no-header table tbody tr {
-  border-top: 1px solid #dadada;
+.table table > tbody > tr:not(:first-child):hover {
+  background-color: #f0f8ff;
 }
 
-/* striped variant */
-.table.striped tbody tr:nth-child(odd) {
-  background-color: var(--light-color);
+.table table > tbody > tr td {
+  padding: 14px 20px;
+  font-size: 1.4rem;
+  color: #333;
+  vertical-align: middle;
 }
 
-/* bordered variant */
-.table.bordered table th,
-.table.bordered table td {
-  border: 1px solid #dadada;
+.table table > tbody > tr td:first-child {
+  color: #005cb9;
+  font-weight: 400;
+}
+
+.table table > tbody > tr td:nth-child(2),
+.table table > tbody > tr td:nth-child(3) {
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+/* Checkmark styling */
+.table table td:contains('✓') { color: #28a745; font-size: 1.8rem; }
+.table table td:contains('✗') { color: #dc3545; font-size: 1.8rem; }
+
+/* Alternating row colors */
+.table table > tbody > tr:not(:first-child):nth-child(even) {
+  background-color: #f8fbff;
+}
+
+/* Background context — when inside blue section, invert */
+.section.dark .table table,
+.section.blue .table table {
+  background: #fff;
+  border-radius: 12px;
 }
