@@ -1,1 +1,179 @@
 /* add global styles that can be loaded post LCP here */
+
+/* OmegaXL Post-LCP styles: footer, promo banners, additional components */
+
+/* Footer OmegaXL styling */
+footer {
+  background: linear-gradient(90deg, #005cb9 0%, #003d80 100%);
+  color: #fff;
+  padding: 40px 0 24px;
+  margin-top: 48px;
+}
+
+footer .footer {
+  max-width: 1264px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+footer a {
+  color: #b3ceea;
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer h2,
+footer h3,
+footer h4 {
+  color: #fff;
+  font-family: var(--type-heading-font-family, Montserrat, sans-serif);
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+footer p {
+  color: #b3ceea;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  margin: 0 0 8px;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer ul li {
+  margin-bottom: 6px;
+}
+
+footer hr {
+  border-color: rgb(255 255 255 / 20%);
+  margin: 24px 0;
+}
+
+/* OmegaXL promo banner bar */
+.promo-banner {
+  background: #00a7e1;
+  color: #fff;
+  text-align: center;
+  padding: 10px 24px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.promo-banner a {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.promo-banner a:hover {
+  color: #FFCB45;
+}
+
+/* OmegaXL dropin button overrides */
+.dropin-design button[class*='primary'],
+.dropin-design [class*='primary-button'] {
+  background-color: #005cb9 !important;
+  border-color: #005cb9 !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+}
+
+.dropin-design button[class*='primary']:hover,
+.dropin-design [class*='primary-button']:hover {
+  background-color: #004d9e !important;
+  border-color: #004d9e !important;
+}
+
+/* OmegaXL accent/secondary actions */
+.dropin-design button[class*='secondary'],
+.dropin-design [class*='secondary-button'] {
+  border-color: #005cb9 !important;
+  color: #005cb9 !important;
+  border-radius: 8px !important;
+}
+
+/* Product detail page add-to-cart button */
+.product-details .dropin-button--primary,
+[class*='add-to-cart'] {
+  background: linear-gradient(90deg, #005cb9 0%, #00a7e1 100%) !important;
+  border: none !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+  font-size: 1.6rem !important;
+  padding: 14px 32px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  transition: opacity 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+[class*='add-to-cart']:hover {
+  opacity: 0.9 !important;
+  box-shadow: 0 4px 16px rgb(0 92 185 / 40%) !important;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  font-size: 1.3rem;
+  color: #666;
+  margin: 8px 0 16px;
+}
+
+.breadcrumbs a {
+  color: #005cb9;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+/* Rating stars accent color */
+.dropin-rating .dropin-rating__icon--filled,
+[class*='star-filled'],
+[class*='rating-filled'] {
+  color: #FFCB45 !important;
+  fill: #FFCB45 !important;
+}
+
+/* Trust badges / icons */
+.trust-badges {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 24px;
+  background: #f2f2f2;
+}
+
+/* Section dividers */
+main > .section + .section {
+  border-top: 0;
+}
+
+/* OmegaXL product grid section heading */
+main > .section > div > h2:first-child,
+main > .section > div > h3:first-child {
+  color: #005cb9;
+  font-family: var(--type-heading-font-family, Montserrat, sans-serif);
+  font-weight: 700;
+  margin-bottom: 24px;
+}
