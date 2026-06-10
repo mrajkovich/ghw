@@ -69,6 +69,7 @@
 
 .cards .cards-card-body p {
   margin: 0;
+  color: #fff;
 }
 
 /* Shop Now button — light blue pill */
@@ -122,9 +123,22 @@
 
 .cards > ul > li:has(.cards-card-image:empty) p,
 .cards > ul > li:not(:has(img)) p {
-  color: rgba(255 255 255 / 85%);
+  color: #fff;
   font-size: 1.4rem;
   line-height: 1.5;
+}
+
+/* Benefits icon cards — icon + text layout, white text */
+#omegaxl-packed-with-benefits + .cards .cards-card-body p {
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+
+#omegaxl-packed-with-benefits + .cards .cards-card-body h3 {
+  color: #fff;
+  font-size: 1.6rem;
+  text-transform: none;
 }
 
 /* Testimonial cards — white cards on blue gradient section */
