@@ -333,8 +333,9 @@ main .section > div > h2::after {
 }
 
 /* Spacing between a cards block and the next h2 heading within the same section */
+main .section > div > .cards-wrapper + h2,
 main .section > div > .cards + h2 {
-  margin-top: 80px;
+  margin-top: 120px;
 }
 
 /* Section with light bg */
