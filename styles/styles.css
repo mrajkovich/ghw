@@ -332,6 +332,11 @@ main .section > div > h2::after {
   border-radius: 2px;
 }
 
+/* Spacing between a cards block and the next h2 heading within the same section */
+main .section > div > .cards + h2 {
+  margin-top: 80px;
+}
+
 /* Section with light bg */
 main .section.light,
 main .section.highlight {
